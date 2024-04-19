@@ -26,21 +26,9 @@ public class User {
     @Column(length = 64, nullable = false)
     private String password;
 
-    @Column(name = "first_name", length = 50)
-    private String firstName;
-
-    @Column(name = "last_name", length = 50)
-    private String lastName;
-
-    @Column(length = 100)
-    private String photo;
-
-    @Column(nullable = true)
-    private boolean enabled;
+    @Column(length = 50)
+    private String fullname;
 
     private String phone;
-
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date created;
 
 }

@@ -1,5 +1,6 @@
 package com.example.springproject.controller;
 
+import com.example.springproject.globalException.UserNotFoundException;
 import com.example.springproject.model.User;
 import com.example.springproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,8 @@ public class UserController {
     }
 
     @RequestMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable("id") Long userId) {
-        try {
-            User user = userService.getUserById(userId);
-            return ResponseEntity.ok().body(user);
-        }
-        catch (Exception ex) {
-            return ResponseEntity.badRequest().body(ex.getMessage());
-        }
+    public ResponseEntity<?> getUserById(@PathVariable("id") Long userId) throws UserNotFoundException {
+        User user = userService.getUserById(userId);
+        return ResponseEntity.ok().body(user);
     }
 }

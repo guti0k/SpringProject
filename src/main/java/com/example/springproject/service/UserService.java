@@ -1,5 +1,6 @@
 package com.example.springproject.service;
 
+import com.example.springproject.globalException.UserNotFoundException;
 import com.example.springproject.model.User;
 import com.example.springproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User getUserById(Long userId) throws Exception {
-        return userRepository.findById(userId).orElseThrow(() -> new Exception("User not found with ID: " + userId));
+    public User getUserById(Long userId) throws UserNotFoundException {
+        return userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found with ID: " + userId));
     }
 }
